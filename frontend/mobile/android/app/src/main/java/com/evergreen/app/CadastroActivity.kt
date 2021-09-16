@@ -1,21 +1,21 @@
 package com.evergreen.app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
-import android.content.Intent
 import android.widget.ImageView
 
-class LoginActivity : AppCompatActivity() {
+class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_cadastro)
 
-        val loginBackButton = findViewById<ImageView>(R.id.loginBackButton)
+        val cancelaCadastro = findViewById<ImageView>(R.id.cancelaCadastro)
 
-        loginBackButton.setOnClickListener{
+        cancelaCadastro.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
 
             startActivity(intent)
