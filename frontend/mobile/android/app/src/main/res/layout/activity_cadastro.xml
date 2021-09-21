@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/layoutNome">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/layoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -114,11 +114,12 @@
         app:layout_constraintTop_toBottomOf="@+id/emailLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtSenha"
+            android:id="@+id/layoutSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:hint="Senha" />
+            android:hint="Senha"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

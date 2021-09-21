@@ -39,14 +39,40 @@ class CadastroActivity : AppCompatActivity() {
 
         btnCadastrar.setOnClickListener{
             val txtNome = findViewById<TextInputEditText>(R.id.txtNome)
-            val txtEmail = findViewById<TextInputEditText>(R.id.txtEmail)
-            val txtSenha = findViewById<TextInputEditText>(R.id.txtSenha)
+            val txtEmail = findViewById<TextInputEditText>(R.id.layoutEmail)
+            val txtSenha = findViewById<TextInputEditText>(R.id.layoutSenha)
             val txtCelular = findViewById<TextInputEditText>(R.id.txtCelular)
 
             val nome = txtNome.text.toString()
             val email = txtEmail.text.toString()
             val senha = txtSenha.text.toString()
             val celular = txtCelular.text.toString()
+
+            if(nome.isEmpty()){
+                txtNome.setError("O campo nome é obrigatório")
+                return@setOnClickListener
+            }
+
+            if(email.isEmpty()){
+                txtEmail.setError("O campo email é obrigatório")
+
+                return@setOnClickListener
+            }
+
+            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                txtEmail.setError("E-mail inválido")
+                return@setOnClickListener
+            }
+
+            if(senha.isEmpty()){
+                txtSenha.setError("O campo senha é obrigatório")
+                return@setOnClickListener
+            }
+
+            if(celular.isEmpty()){
+                txtCelular.setError("O campo celular é obrigatório")
+                return@setOnClickListener
+            }
 
             val user = User(
                 nome,
