@@ -10,8 +10,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.evergreen.app.api.LoginRequest
 import com.evergreen.app.api.LoginResponse
-import com.evergreen.app.api.NewUserResponse
-import com.evergreen.app.api.User
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
 
             if(email.isEmpty()){
                 txtEmail.setError("O campo email é obrigatório")
-
                 return@setOnClickListener
             }
 
@@ -58,12 +55,12 @@ class LoginActivity : AppCompatActivity() {
                 txtSenha.setError("O campo senha é obrigatório")
                 return@setOnClickListener
             }
-
-            login(email,senha)
+            val intent = Intent(this,FeedActivity::class.java)
+            login(email,senha, intent)
         }
     }
 
-    private fun login(username:String, password:String){
+    private fun login(username:String, password:String, intent: Intent){
         try {
             val api:ApíService = Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -85,19 +82,16 @@ class LoginActivity : AppCompatActivity() {
                         Log.d(TAG, data.jwt)
 
                         if(data.success) {
-                            Toast.makeText(baseContext, data.jwt, Toast.LENGTH_SHORT).show()
-                            //this@CadastroActivity.finish()
+                            startActivity(intent)
                         }
                         else {
                             Toast.makeText(baseContext, "Usuario e/ou senha inválidos", Toast.LENGTH_SHORT).show()
                         }
-
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
                     Log.d(TAG, t?.message.toString())
-
                     Toast.makeText(baseContext, "Usuario e/ou senha inválidos", Toast.LENGTH_SHORT).show()
                 }
             })
