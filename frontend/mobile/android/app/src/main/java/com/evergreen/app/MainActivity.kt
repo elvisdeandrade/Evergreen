@@ -20,5 +20,13 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
+
+        btnCadastrar.setOnClickListener{
+            val intent = Intent(this,CadastroActivity::class.java)
+
+            startActivity(intent)
+        }
     }
 }
